@@ -1,0 +1,23 @@
+{
+  "name": "capitalism-game-map",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "http-server -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devchain-solutions/capitalism-game-map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devchain-solutions/capitalism-game-map/issues"
+  },
+  "homepage": "https://github.com/devchain-solutions/capitalism-game-map#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
