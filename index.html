@@ -10,6 +10,9 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var gameMap = new GameMap();
+      gameMap.handleClickOnParcel(function(e){
+        alert(e.target.id);
+      });
       gameMap.render(document.getElementById('root'));
     });
   </script>
