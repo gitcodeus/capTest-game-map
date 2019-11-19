@@ -8,12 +8,132 @@
   <div id="root"></div>
   <script src="lib/gameMap.js"></script>
   <script>
+    var gameMap;
     document.addEventListener("DOMContentLoaded", function() {
-      var gameMap = new GameMap();
-      gameMap.handleClickOnParcel(function(e){
-        alert(e.target.id);
-      });
-      gameMap.render(document.getElementById('root'));
+      var rootEl = document.getElementById('root');
+      var clickOnParcelHandler = function(e) {
+        var parcelData = gameMap.getParcelDataById(e.target.id);
+        alert('id: ' + parcelData.id + ', x: ' + parcelData.x + ', y: ' + parcelData.y);
+      };
+      var mapData = {
+        sizeX: 10,
+        sizeY: 10,
+        parcelsData: [
+          {id: 'parcel_1', x: 0, y: 0},
+          {id: 'parcel_2', x: 1, y: 0},
+          {id: 'parcel_3', x: 2, y: 0},
+          {id: 'parcel_4', x: 3, y: 0},
+          {id: 'parcel_5', x: 4, y: 0},
+          {id: 'parcel_6', x: 5, y: 0},
+          {id: 'parcel_7', x: 6, y: 0},
+          {id: 'parcel_8', x: 7, y: 0},
+          {id: 'parcel_9', x: 8, y: 0},
+          {id: 'parcel_10', x: 9, y: 0},
+
+          {id: 'parcel_11', x: 0, y: 1},
+          {id: 'parcel_12', x: 1, y: 1},
+          {id: 'parcel_13', x: 2, y: 1},
+          {id: 'parcel_14', x: 3, y: 1},
+          {id: 'parcel_15', x: 4, y: 1},
+          {id: 'parcel_16', x: 5, y: 1},
+          {id: 'parcel_17', x: 6, y: 1},
+          {id: 'parcel_18', x: 7, y: 1},
+          {id: 'parcel_19', x: 8, y: 1},
+          {id: 'parcel_20', x: 9, y: 1},
+
+          {id: 'parcel_21', x: 0, y: 2},
+          {id: 'parcel_22', x: 1, y: 2},
+          {id: 'parcel_23', x: 2, y: 2},
+          {id: 'parcel_24', x: 3, y: 2},
+          {id: 'parcel_25', x: 4, y: 2},
+          {id: 'parcel_26', x: 5, y: 2},
+          {id: 'parcel_27', x: 6, y: 2},
+          {id: 'parcel_28', x: 7, y: 2},
+          {id: 'parcel_29', x: 8, y: 2},
+          {id: 'parcel_30', x: 9, y: 2},
+
+          {id: 'parcel_31', x: 0, y: 3},
+          {id: 'parcel_32', x: 1, y: 3},
+          {id: 'parcel_33', x: 2, y: 3},
+          {id: 'parcel_34', x: 3, y: 3},
+          {id: 'parcel_35', x: 4, y: 3},
+          {id: 'parcel_36', x: 5, y: 3},
+          {id: 'parcel_37', x: 6, y: 3},
+          {id: 'parcel_38', x: 7, y: 3},
+          {id: 'parcel_39', x: 8, y: 3},
+          {id: 'parcel_40', x: 9, y: 3},
+
+          {id: 'parcel_41', x: 0, y: 4},
+          {id: 'parcel_42', x: 1, y: 4},
+          {id: 'parcel_43', x: 2, y: 4},
+          {id: 'parcel_44', x: 3, y: 4},
+          {id: 'parcel_45', x: 4, y: 4},
+          {id: 'parcel_46', x: 5, y: 4},
+          {id: 'parcel_47', x: 6, y: 4},
+          {id: 'parcel_48', x: 7, y: 4},
+          {id: 'parcel_49', x: 8, y: 4},
+          {id: 'parcel_50', x: 9, y: 4},
+
+          {id: 'parcel_51', x: 0, y: 5},
+          {id: 'parcel_52', x: 1, y: 5},
+          {id: 'parcel_53', x: 2, y: 5},
+          {id: 'parcel_54', x: 3, y: 5},
+          {id: 'parcel_55', x: 4, y: 5},
+          {id: 'parcel_56', x: 5, y: 5},
+          {id: 'parcel_57', x: 6, y: 5},
+          {id: 'parcel_58', x: 7, y: 5},
+          {id: 'parcel_59', x: 8, y: 5},
+          {id: 'parcel_60', x: 9, y: 5},
+
+          {id: 'parcel_61', x: 0, y: 6},
+          {id: 'parcel_62', x: 1, y: 6},
+          {id: 'parcel_63', x: 2, y: 6},
+          {id: 'parcel_64', x: 3, y: 6},
+          {id: 'parcel_65', x: 4, y: 6},
+          {id: 'parcel_66', x: 5, y: 6},
+          {id: 'parcel_67', x: 6, y: 6},
+          {id: 'parcel_68', x: 7, y: 6},
+          {id: 'parcel_69', x: 8, y: 6},
+          {id: 'parcel_70', x: 9, y: 6},
+
+          {id: 'parcel_71', x: 0, y: 7},
+          {id: 'parcel_72', x: 1, y: 7},
+          {id: 'parcel_73', x: 2, y: 7},
+          {id: 'parcel_74', x: 3, y: 7},
+          {id: 'parcel_75', x: 4, y: 7},
+          {id: 'parcel_76', x: 5, y: 7},
+          {id: 'parcel_77', x: 6, y: 7},
+          {id: 'parcel_78', x: 7, y: 7},
+          {id: 'parcel_79', x: 8, y: 7},
+          {id: 'parcel_80', x: 9, y: 7},
+
+          {id: 'parcel_81', x: 0, y: 8},
+          {id: 'parcel_82', x: 1, y: 8},
+          {id: 'parcel_83', x: 2, y: 8},
+          {id: 'parcel_84', x: 3, y: 8},
+          {id: 'parcel_85', x: 4, y: 8},
+          {id: 'parcel_86', x: 5, y: 8},
+          {id: 'parcel_87', x: 6, y: 8},
+          {id: 'parcel_88', x: 7, y: 8},
+          {id: 'parcel_89', x: 8, y: 8},
+          {id: 'parcel_90', x: 9, y: 8},
+
+          {id: 'parcel_91', x: 0, y: 9},
+          {id: 'parcel_92', x: 1, y: 9},
+          {id: 'parcel_93', x: 2, y: 9},
+          {id: 'parcel_94', x: 3, y: 9},
+          {id: 'parcel_95', x: 4, y: 9},
+          {id: 'parcel_96', x: 5, y: 9},
+          {id: 'parcel_97', x: 6, y: 9},
+          {id: 'parcel_98', x: 7, y: 9},
+          {id: 'parcel_99', x: 8, y: 9},
+          {id: 'parcel_100', x: 9, y: 9}
+        ]
+      };
+
+      gameMap = new GameMap(mapData);
+      gameMap.setClickOnParcelHandler(clickOnParcelHandler);
+      gameMap.render(rootEl);
     });
   </script>
 </body>
